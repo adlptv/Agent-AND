@@ -1,4 +1,4 @@
-﻿"""
+"""
 AND Search — search across all reference files for keywords.
 Usage: python search.py <query> [--vendor <name>]
 """
