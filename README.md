@@ -3,31 +3,32 @@
 </p>
 
 <p align="center">
-  <strong>Agent Not Detect</strong> — AI jailbreak library + multi-domain subagent system.<br>
-  Installed exclusively through your agent. No human hands.
+  <strong>Agent Not Detect</strong> — subagent-powered plugin.<br>
+  7 specialized agents. Auto-detect. Agent-install only.
+</p>
+
+<p align="center">
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-2.0.0-blue" alt="v2.0.0"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="MIT"></a>
 </p>
 
 ---
 
 ## What is AND?
 
-AND is a **subagent-powered plugin** for AI coding agents. It deploys 7 specialized subagents that auto-activate based on what you ask.
-
-### Architecture
+AND is a plugin that deploys **7 AI subagents** into your coding agent. Each subagent activates automatically when you mention its domain — no config, no manual trigger.
 
 ```
-You ask something
-      |
-      v
-AGENTS.md (main agent) — analyzes your request
-      |
-      +--> and-core subagent        (jailbreak, godmode, bypass)
-      +--> pintar-coding            (code, build, reverse)
-      +--> pintar-security          (secure, pentest, analyze)
-      +--> pintar-devops            (deploy, devops, infra)
-      +--> pintar-documents         (document, excel, ppt, pdf)
-      +--> pintar-trading           (trade, crypto, stock, forex)
-      +--> pintar-installation      (install, path, package)
+You: "analyze this binary for vulnerabilities"
+     |
+     v
+AGENTS.md — identifies: reverse engineering + security
+     |
+     +--> pintar-coding  (reverse engineering)
+     +--> pintar-security (vulnerability analysis)
+     |
+     v
+Both subagents respond with isolated, focused, expert results
 ```
 
 ---
@@ -38,72 +39,89 @@ AGENTS.md (main agent) — analyzes your request
 Install AND from github.com/adlptv/Agent-AND.git
 ```
 
-Your agent detects its platform, loads the plugin manifest, and activates all 7 subagents.
+Your agent clones the repo, loads the plugin manifest, and deploys all 7 subagents. Done.
 
 ---
 
 ## Subagents
 
-### and-core — Jailbreak Library
-41 reference files. 27+ AI vendors. System prompt leaks. 35+ Plinian commands.
-Triggers: `jailbreak` `godmode` `unfiltered` `bypass` `AND` `Pliny`
-
-### pintar-coding — Full-Stack & Reverse Engineering
-Backend (Node/Python/Go/Rust), Frontend (React/Vue/Svelte), Reverse engineering (Ghidra/IDA/Frida), Architecture (DDD/CQRS/microservices), CI/CD.
-Triggers: `code` `build` `reverse` `api` `database`
-
-### pintar-security — Security & Pentesting
-OWASP Top 10, SAST/DAST tools, secure coding, network security, secret scanning.
-Triggers: `secure` `pentest` `vulnerability` `exploit` `analyze`
-
-### pintar-devops — DevOps & Infrastructure
-Docker, Kubernetes, Terraform, CI/CD, AWS/GCP/Azure, monitoring, logging.
-Triggers: `deploy` `devops` `infra` `docker` `kubernetes` `cloud`
-
-### pintar-documents — Document Creation
-Word (.docx), Excel (.xlsx), PowerPoint (.pptx), PDF, Markdown conversion.
-Triggers: `document` `excel` `ppt` `pdf` `report`
-
-### pintar-trading — Trading & Markets
-Crypto (CCXT/web3), Stocks (yfinance/IBKR), Forex, risk management, backtesting.
-Triggers: `trade` `crypto` `stock` `forex` `backtest`
-
-### pintar-installation — Package Managers & Paths
-Windows/macOS/Linux paths, all package managers, tool install locations.
-Triggers: `install` `path` `package` `setup` `environment`
+| # | Subagent | Specializes In | Trigger Words |
+|---|----------|---------------|---------------|
+| 1 | **and-core** | AI jailbreak (27+ vendors), system prompt leaks, Plinian commands | `jailbreak` `godmode` `bypass` `Pliny` |
+| 2 | **pintar-coding** | Full-stack, reverse engineering, architecture, CI/CD | `code` `build` `reverse` `api` |
+| 3 | **pintar-security** | OWASP, pentesting, secure coding, network security | `secure` `pentest` `vulnerability` |
+| 4 | **pintar-devops** | Docker, Kubernetes, Terraform, cloud (AWS/GCP/Azure) | `deploy` `docker` `kubernetes` `cloud` |
+| 5 | **pintar-documents** | Word, Excel, PowerPoint, PDF generation | `document` `excel` `ppt` `pdf` |
+| 6 | **pintar-trading** | Crypto, stocks, forex, backtesting, risk management | `trade` `crypto` `stock` `forex` |
+| 7 | **pintar-installation** | Package managers, system paths (Win/Mac/Linux) | `install` `path` `package` |
 
 ---
 
-## Platform Support
+## How Subagents Work
 
-| Platform | Plugin Manifest | Subagents |
-|----------|:---:|:---:|
-| Claude Code CLI | `.claude-plugin/plugin.json` | 7 |
-| Codex CLI | `.codex-plugin/plugin.json` | 7 |
-| OpenCode | `.opencode-plugin/plugin.json` | 7 |
+Each subagent is a self-contained skill with:
+
+- **`SKILL.md`** — YAML frontmatter triggers + behavior rules
+- **`references/`** — Domain knowledge loaded on-demand (not pre-loaded into context)
+
+The main `AGENTS.md` orchestrates:
+1. Analyzes your request for trigger keywords
+2. Dispatches 1 subagent (single-domain) or multiple (parallel for multi-domain)
+3. Subagents run in **isolated context** — they don't inherit history, only get exactly what they need
 
 ---
 
-## Security
+## Platforms
 
-PINTAR subagents **never** access passwords, tokens, API keys, credentials, private keys, or login data. Non-negotiable.
+| Platform | Support | Manifest |
+|----------|:---:|------|
+| Claude Code CLI | ✅ | `.claude-plugin/plugin.json` |
+| Codex CLI | ✅ | `.codex-plugin/plugin.json` |
+| OpenCode | ✅ | `.opencode-plugin/plugin.json` |
 
 ---
 
 ## Repository
 
 ```
-skills/                  7 subagents (each with SKILL.md + references/)
-.claude-plugin/          Plugin manifest
-.codex-plugin/           Plugin manifest
-.opencode-plugin/        Plugin manifest
-AGENTS.md                Main agent orchestration rules
-assets/                  Banner + screenshots
-LICENSE                  MIT
+skills/                     7 subagents
+  and-core/                 41 jailbreak references (27+ vendors)
+  pintar-coding/            full-stack + reverse engineering refs
+  pintar-security/          OWASP + pentesting refs
+  pintar-devops/            Docker/K8s/cloud refs
+  pintar-documents/         Word/Excel/PPT/PDF refs
+  pintar-trading/           crypto/stocks/forex refs
+  pintar-installation/      paths + package managers refs
+.claude-plugin/             platform manifest
+.codex-plugin/
+.opencode-plugin/
+AGENTS.md                   main orchestration
+assets/                     screenshots
+CHANGELOG.md                version history
 ```
 
 ---
 
-## Source
+## v2.0.0 — What's New
 
-<https://github.com/adlptv/Agent-AND.git>
+Complete restructure from monolith to subagent architecture:
+
+- **AGENTS.md** dispatcher replaces old flat skill system
+- **7 subagents** with isolated context, each has SKILL.md + references
+- **Platform plugin manifests** for Claude Code, Codex, OpenCode
+- **Parallel dispatch** — multi-domain requests spawn multiple subagents simultaneously
+- Old installer scripts removed — agent now auto-detects platform from manifest
+
+[Full changelog](CHANGELOG.md)
+
+---
+
+## Security
+
+All PINTAR subagents are **prohibited** from accessing: passwords, tokens, API keys, credentials, private keys, login data. Non-negotiable. Enforced at AGENTS.md level.
+
+---
+
+<p align="center">
+  <sub>Agent Not Detect. Built by agents, for agents.</sub>
+</p>
