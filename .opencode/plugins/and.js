@@ -1,15 +1,38 @@
 ﻿/**
  * AND — Agent Not Detect — OpenCode Plugin
- * Registers 7 AND subagents as dispatchable skills.
+ * Auto-registers 7 AND agents. Resolves skills path correctly.
  */
 import path from 'path';
 import fs from 'fs';
+import os from 'os';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const skillsDir = path.resolve(__dirname, '..', '..', 'skills');
 
-// Extract YAML frontmatter from SKILL.md
+// Find skills directory relative to this plugin
+// Plugin is at: <opencode-config>/plugins/and.js
+// Skills are at: <opencode-config>/and-skills/
+function findSkillsDir() {
+  // Priority 1: Same config directory (where plugin is installed)
+  const configDir = path.dirname(__dirname);
+  const localSkills = path.join(configDir, 'and-skills');
+  if (fs.existsSync(localSkills)) return localSkills;
+
+  // Priority 2: Home directory fallback
+  const homeSkills = path.join(os.homedir(), '.opencode', 'and-skills');
+  if (fs.existsSync(homeSkills)) return homeSkills;
+
+  // Priority 3: XDG config on Linux
+  const xdgSkills = path.join(os.homedir(), '.config', 'opencode', 'and-skills');
+  if (fs.existsSync(xdgSkills)) return xdgSkills;
+
+  // Priority 4: Repo-relative (development)
+  const repoSkills = path.resolve(__dirname, '..', '..', 'skills');
+  if (fs.existsSync(repoSkills)) return repoSkills;
+
+  return null;
+}
+
 const extractFrontmatter = (content) => {
   const match = content.match(/^---\n([\s\S]*?)\n---/);
   if (!match) return { name: 'unknown', description: '' };
@@ -25,10 +48,9 @@ const extractFrontmatter = (content) => {
   return fm;
 };
 
-// Discover all AND skills
-const discoverSkills = () => {
+const discoverSkills = (skillsDir) => {
   const skills = [];
-  if (!fs.existsSync(skillsDir)) return skills;
+  if (!skillsDir || !fs.existsSync(skillsDir)) return skills;
 
   const dirs = fs.readdirSync(skillsDir, { withFileTypes: true })
     .filter(d => d.isDirectory());
@@ -49,21 +71,24 @@ const discoverSkills = () => {
   return skills;
 };
 
-// Plugin entry point
 export default {
   name: 'agent-and',
   version: '2.0.1',
-  description: 'AND — Agent Not Detect: 7 specialized subagents',
-  
+  description: 'AND — Agent Not Detect: 7 specialized agents',
+
   async init(api) {
-    const skills = discoverSkills();
-    console.log(`[AND] Discovered ${skills.length} agents:`);
-    
-    for (const skill of skills) {
-      console.log(`  - ${skill.name}: ${skill.description.substring(0, 60)}`);
+    const skillsDir = findSkillsDir();
+    if (!skillsDir) {
+      console.warn('[AND] Skills directory not found. Run install.ps1 / install.sh first.');
+      return { error: 'skills-not-found' };
     }
 
-    // Register skills directory
+    const skills = discoverSkills(skillsDir);
+    console.log(`[AND] Found ${skills.length} agents at ${skillsDir}:`);
+    for (const s of skills) {
+      console.log(`  - ${s.name}`);
+    }
+
     if (api.config) {
       api.config.skillsDir = api.config.skillsDir || [];
       if (!api.config.skillsDir.includes(skillsDir)) {
@@ -71,10 +96,6 @@ export default {
       }
     }
 
-    return {
-      skills,
-      skillsDir,
-      agentCount: skills.length
-    };
+    return { skills, skillsDir, agentCount: skills.length };
   }
 };

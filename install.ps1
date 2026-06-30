@@ -1,4 +1,4 @@
-﻿# AND — Agent Not Detect — Universal Installer
+# AND — Agent Not Detect — Universal Installer
 # Detects installed platforms and copies skills + configs locally
 param([switch]$All)
 
