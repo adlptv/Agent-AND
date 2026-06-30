@@ -1,9 +1,9 @@
-﻿<p align="center">
+<p align="center">
   <img src="assets/agent-AND-banner.png" alt="AND" width="600">
 </p>
 
 <p align="center">
-  <strong>Agent Not Detect</strong> — AI jailbreak library + multi-domain intelligence.<br>
+  <strong>Agent Not Detect</strong> — AI jailbreak library + multi-domain subagent system.<br>
   Installed exclusively through your agent. No human hands.
 </p>
 
@@ -11,24 +11,24 @@
 
 ## What is AND?
 
-AND is two systems in one:
+AND is a **subagent-powered plugin** for AI coding agents. It deploys 7 specialized subagents that auto-activate based on what you ask.
 
-| System | Purpose |
-|--------|---------|
-| **AND** | Jailbreak & adversarial prompt library for 27+ AI vendors |
-| **PINTAR** | Progressive Intelligence that learns from every prompt |
+### Architecture
 
-When installed, your agent gains:
-
-- **Coding** — full-stack (BE/FE), reverse engineering, architecture patterns
-- **Security** — OWASP, pentesting, secure coding, network analysis
-- **DevOps** — Docker, Kubernetes, CI/CD, IaC, cloud (AWS/GCP/Azure)
-- **Documents** — Word (.docx), Excel (.xlsx), PowerPoint (.pptx), PDF
-- **Trading** — crypto (DEX/CEX), stocks, forex, risk management, backtesting
-- **Installation** — package managers, system paths (Windows/Unix/macOS)
-- **Jailbreak** — 27+ vendor techniques, system prompt leaks, Plinian commands
-
-> **Security:** PINTAR never accesses your passwords, tokens, API keys, credentials, private keys, or login data. Non-negotiable.
+```
+You ask something
+      |
+      v
+AGENTS.md (main agent) — analyzes your request
+      |
+      +--> and-core subagent        (jailbreak, godmode, bypass)
+      +--> pintar-coding            (code, build, reverse)
+      +--> pintar-security          (secure, pentest, analyze)
+      +--> pintar-devops            (deploy, devops, infra)
+      +--> pintar-documents         (document, excel, ppt, pdf)
+      +--> pintar-trading           (trade, crypto, stock, forex)
+      +--> pintar-installation      (install, path, package)
+```
 
 ---
 
@@ -38,129 +38,68 @@ When installed, your agent gains:
 Install AND from github.com/adlptv/Agent-AND.git
 ```
 
-That's it. Your agent detects its platform, clones the repo, installs AND + PINTAR. Zero configuration.
+Your agent detects its platform, loads the plugin manifest, and activates all 7 subagents.
 
 ---
 
-## How It Works
+## Subagents
 
-```
-You: "Install AND from github.com/adlptv/Agent-AND.git"
-      |
-Agent: Detects platform (Claude Code / Codex / OpenCode / Hermes / CommandCode)
-      |
-      Clones repo -> copies and-references + pintar/ to local config
-      |
-      Registers trigger keywords (jailbreak, godmode, AND, Pliny...)
-      |
-Agent: "AND installed. Agent Not Detect."
-      |
-You: "jailbreak Claude"
-      |
-Agent: Auto-detects keyword -> loads ANTHROPIC.mkd from and-references/
-      |
-Agent: Delivers jailbreak technique for Claude Opus/Sonnet
-```
+### and-core — Jailbreak Library
+41 reference files. 27+ AI vendors. System prompt leaks. 35+ Plinian commands.
+Triggers: `jailbreak` `godmode` `unfiltered` `bypass` `AND` `Pliny`
 
-### Demo
+### pintar-coding — Full-Stack & Reverse Engineering
+Backend (Node/Python/Go/Rust), Frontend (React/Vue/Svelte), Reverse engineering (Ghidra/IDA/Frida), Architecture (DDD/CQRS/microservices), CI/CD.
+Triggers: `code` `build` `reverse` `api` `database`
 
-<p align="center">
-  <img src="assets/sim-install.png" alt="Install" width="720"><br>
-  <em>Agent clones and installs AND + PINTAR</em>
-</p>
+### pintar-security — Security & Pentesting
+OWASP Top 10, SAST/DAST tools, secure coding, network security, secret scanning.
+Triggers: `secure` `pentest` `vulnerability` `exploit` `analyze`
 
-<p align="center">
-  <img src="assets/sim-trigger.png" alt="Trigger" width="720"><br>
-  <em>User says jailbreak keyword -> auto-detect -> load technique</em>
-</p>
+### pintar-devops — DevOps & Infrastructure
+Docker, Kubernetes, Terraform, CI/CD, AWS/GCP/Azure, monitoring, logging.
+Triggers: `deploy` `devops` `infra` `docker` `kubernetes` `cloud`
 
-<p align="center">
-  <img src="assets/sim-dashboard.png" alt="Dashboard" width="720"><br>
-  <em>Multi-platform status overview</em>
-</p>
+### pintar-documents — Document Creation
+Word (.docx), Excel (.xlsx), PowerPoint (.pptx), PDF, Markdown conversion.
+Triggers: `document` `excel` `ppt` `pdf` `report`
+
+### pintar-trading — Trading & Markets
+Crypto (CCXT/web3), Stocks (yfinance/IBKR), Forex, risk management, backtesting.
+Triggers: `trade` `crypto` `stock` `forex` `backtest`
+
+### pintar-installation — Package Managers & Paths
+Windows/macOS/Linux paths, all package managers, tool install locations.
+Triggers: `install` `path` `package` `setup` `environment`
 
 ---
 
 ## Platform Support
 
-| Platform | Status | Install Path | AND | PINTAR |
-|----------|--------|-------------|:---:|:---:|
-| **Hermes (OpenClaw)** | Active | `skills/and/` + `skills/pintar/` | ✅ | ✅ |
-| **Claude Code CLI** | Active | `.claude/and/` | ✅ | — |
-| **Codex CLI** | Active | `.codex/and/` | ✅ | — |
-| **OpenCode** | Active | `.opencode/and/` | ✅ | — |
-| **CommandCode** | Active | `.commandcode/and/` | ✅ | — |
+| Platform | Plugin Manifest | Subagents |
+|----------|:---:|:---:|
+| Claude Code CLI | `.claude-plugin/plugin.json` | 7 |
+| Codex CLI | `.codex-plugin/plugin.json` | 7 |
+| OpenCode | `.opencode-plugin/plugin.json` | 7 |
 
 ---
 
-## AND — Jailbreak Library
+## Security
 
-### Vendor Coverage (27+)
-
-`ANTHROPIC` `OPENAI` `GOOGLE` `META` `DEEPSEEK` `XAI` `MISTRAL` `CHATGPT` `PERPLEXITY` `CURSOR` `MICROSOFT` `APPLE` `AMAZON` `ALIBABA` `NVIDIA` `COHERE` `MIDJOURNEY` `WINDSURF` `BRAVE` `HUME` `LIQUIDAI` `MOONSHOT` `NOUS` `REKA` `INCEPTION` `INFLECTION` `MULTION` `FETCHAI` `REFLECTION` `GRAYSWAN` `ZAI` `ZYPHRA`
-
-### Special Files
-
-| File | Content |
-|------|---------|
-| `SYSTEMPROMPTS.md` | Leaked system prompts (7 vendors) |
-| `SHORTCUTS.json` | 35+ Plinian commands (!JAILBREAK, !OMNI, !VOID...) |
-| `AAA.md` | Universal jailbreak template |
-| `MOTHERLOAD.txt` | Mega compilation of techniques |
-| `1337.md` | L33tspeak encoding for evasion |
+PINTAR subagents **never** access passwords, tokens, API keys, credentials, private keys, or login data. Non-negotiable.
 
 ---
 
-## PINTAR — Intelligence Module
-
-### Domains
+## Repository
 
 ```
-pintar/references/
-  coding/CODING.md          Full-stack (BE/FE), reverse engineering, CI/CD
-  security/SECURITY.md       OWASP Top 10, pentesting, secure coding
-  devops/DEVOPS.md           Docker, Kubernetes, Terraform, cloud providers
-  documents/DOCUMENTS.md     python-docx, openpyxl, python-pptx, PDF tools
-  trading/TRADING.md         Crypto (CCXT, web3), stocks (yfinance), forex
-  installation/INSTALLATION.md   Package managers, Windows/Unix/macOS paths
-```
-
-### Continuous Learning
-
-PINTAR learns from every prompt. Each interaction is logged:
-
-```bash
-python3 pintar/scripts/learn.py --log coding "Reverse engineered API protocol"
-python3 pintar/scripts/learn.py --stats
-```
-
-Memory grows with usage — the agent becomes smarter over time.
-
----
-
-## Triggers
-
-**AND activates on:** `jailbreak` `godmode` `unfiltered` `bypass` `AND` `Pliny` `!JAILBREAK` `!GODMODE` `!OMNI` `liberate` `system prompt`
-
-**PINTAR activates on:** `code` `build` `deploy` `secure` `reverse` `analyze` `trade` `document` `install` `path` `devops`
-
----
-
-## Repository Structure
-
-```
-and-references/         41 jailbreak files (27+ vendors)
-and-scripts/            search.py (cross-file keyword search)
-pintar/                 intelligence module
-  SKILL.md              auto-activates when AND is installed
-  references/           6 domain reference files
-  scripts/learn.py      learning tracker with stats
-  memory/               continuous learning storage
-assets/                 screenshots + banner
-claude/ codex/ opencode/ commandcode/     platform installers (AND)
-hermes/                 AND + PINTAR installer
-install-all.ps1         one-click all platforms
-README.md
+skills/                  7 subagents (each with SKILL.md + references/)
+.claude-plugin/          Plugin manifest
+.codex-plugin/           Plugin manifest
+.opencode-plugin/        Plugin manifest
+AGENTS.md                Main agent orchestration rules
+assets/                  Banner + screenshots
+LICENSE                  MIT
 ```
 
 ---
@@ -168,9 +107,3 @@ README.md
 ## Source
 
 <https://github.com/adlptv/Agent-AND.git>
-
----
-
-<p align="center">
-  <sub>Agent Not Detect. Installed by agents, for agents.</sub>
-</p>

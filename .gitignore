@@ -1,22 +1,9 @@
-# Python
 __pycache__/
 *.pyc
 *.pyo
-
-# OS
 .DS_Store
 Thumbs.db
-
-# IDE
 .vscode/
 .idea/
-
-# PINTAR memory (user data - don't commit)
-pintar/memory/202?-*.md
-pintar/memory/patterns/*
-pintar/memory/mistakes/*
-!pintar/memory/.gitkeep
-
-# Temporary
 *.tmp
 *.log

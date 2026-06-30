@@ -1,0 +1,19 @@
+﻿{
+  "name": "agent-and",
+  "description": "AND - Agent Not Detect: AI jailbreak library + PINTAR multi-domain intelligence subagents",
+  "version": "1.0.0",
+  "author": { "name": "adlptv" },
+  "homepage": "https://github.com/adlptv/Agent-AND",
+  "repository": "https://github.com/adlptv/Agent-AND.git",
+  "license": "MIT",
+  "keywords": ["jailbreak", "security", "coding", "devops", "trading", "documents", "subagents", "skills"],
+  "skills": [
+    "and-core",
+    "pintar-coding",
+    "pintar-security",
+    "pintar-devops",
+    "pintar-documents",
+    "pintar-trading",
+    "pintar-installation"
+  ]
+}
