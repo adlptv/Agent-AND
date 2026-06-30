@@ -1,0 +1,22 @@
+﻿{
+  "name": "agent-and",
+  "version": "2.0.0",
+  "description": "AI jailbreak library + 7 PINTAR multi-domain subagents",
+  "author": { "name": "adlptv" },
+  "homepage": "https://github.com/adlptv/Agent-AND",
+  "license": "MIT",
+  "keywords": ["jailbreak", "security", "coding", "devops", "trading", "documents", "subagents"],
+  "skills": "./skills/",
+  "sessionStart": {
+    "skill": "and-core"
+  },
+  "skillInstructions": "Kimi Code tool mapping for AND skills:\n\n- When a AND skill dispatches a subagent, use Kimi Code's Agent tool with subagent_type: coder, explore, or plan as appropriate.\n- For jailbreak/security analysis: Agent with subagent_type: explore\n- For coding/implementation: Agent with subagent_type: coder\n- For planning/architecture: Agent with subagent_type: plan\n- Use Kimi Code's Read, Write, Edit, Bash, Grep, Glob, FetchURL, WebSearch tools by their native names.\n- When a skill asks to search file contents, use Grep; file patterns, use Glob; fetch URL, use FetchURL; search web, use WebSearch.",
+  "interface": {
+    "displayName": "AND - Agent Not Detect",
+    "shortDescription": "Jailbreak library + 7 expert subagents for coding, security, devops, docs, trading",
+    "longDescription": "AND deploys 7 subagents: and-core (jailbreak library), pintar-coding, pintar-security, pintar-devops, pintar-documents, pintar-trading, pintar-installation. Each auto-activates via keyword triggers.",
+    "developerName": "adlptv",
+    "capabilities": ["Interactive", "Read", "Write"],
+    "websiteURL": "https://github.com/adlptv/Agent-AND"
+  }
+}

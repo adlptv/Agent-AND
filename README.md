@@ -3,32 +3,33 @@
 </p>
 
 <p align="center">
-  <strong>Agent Not Detect</strong> — subagent-powered plugin.<br>
+  <strong>Agent Not Detect</strong> — subagent-powered plugin for 6 platforms.<br>
   7 specialized agents. Auto-detect. Agent-install only.
 </p>
 
 <p align="center">
   <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-2.0.0-blue" alt="v2.0.0"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="MIT"></a>
+  <a href="#platforms"><img src="https://img.shields.io/badge/platforms-6-orange" alt="6 platforms"></a>
 </p>
 
 ---
 
 ## What is AND?
 
-AND is a plugin that deploys **7 AI subagents** into your coding agent. Each subagent activates automatically when you mention its domain — no config, no manual trigger.
+AND deploys **7 AI subagents** into your coding agent. Each activates automatically when you mention its domain.
 
 ```
-You: "analyze this binary for vulnerabilities"
+You: "reverse engineer this binary and check for vulnerabilities"
      |
      v
-AGENTS.md — identifies: reverse engineering + security
+AGENTS.md detects: reverse engineering + security
      |
      +--> pintar-coding  (reverse engineering)
      +--> pintar-security (vulnerability analysis)
      |
      v
-Both subagents respond with isolated, focused, expert results
+Both subagents respond with isolated, focused results
 ```
 
 ---
@@ -39,78 +40,72 @@ Both subagents respond with isolated, focused, expert results
 Install AND from github.com/adlptv/Agent-AND.git
 ```
 
-Your agent clones the repo, loads the plugin manifest, and deploys all 7 subagents. Done.
+Your agent clones, detects its platform from the manifest, loads all 7 subagents.
 
 ---
 
 ## Subagents
 
-| # | Subagent | Specializes In | Trigger Words |
-|---|----------|---------------|---------------|
-| 1 | **and-core** | AI jailbreak (27+ vendors), system prompt leaks, Plinian commands | `jailbreak` `godmode` `bypass` `Pliny` |
-| 2 | **pintar-coding** | Full-stack, reverse engineering, architecture, CI/CD | `code` `build` `reverse` `api` |
-| 3 | **pintar-security** | OWASP, pentesting, secure coding, network security | `secure` `pentest` `vulnerability` |
-| 4 | **pintar-devops** | Docker, Kubernetes, Terraform, cloud (AWS/GCP/Azure) | `deploy` `docker` `kubernetes` `cloud` |
-| 5 | **pintar-documents** | Word, Excel, PowerPoint, PDF generation | `document` `excel` `ppt` `pdf` |
-| 6 | **pintar-trading** | Crypto, stocks, forex, backtesting, risk management | `trade` `crypto` `stock` `forex` |
-| 7 | **pintar-installation** | Package managers, system paths (Win/Mac/Linux) | `install` `path` `package` |
-
----
-
-## How Subagents Work
-
-Each subagent is a self-contained skill with:
-
-- **`SKILL.md`** — YAML frontmatter triggers + behavior rules
-- **`references/`** — Domain knowledge loaded on-demand (not pre-loaded into context)
-
-The main `AGENTS.md` orchestrates:
-1. Analyzes your request for trigger keywords
-2. Dispatches 1 subagent (single-domain) or multiple (parallel for multi-domain)
-3. Subagents run in **isolated context** — they don't inherit history, only get exactly what they need
+| # | Subagent | Domain | Trigger |
+|---|----------|--------|---------|
+| 1 | **and-core** | AI jailbreak (27+ vendors, system prompt leaks) | `jailbreak` `godmode` `bypass` |
+| 2 | **pintar-coding** | Full-stack, reverse engineering, architecture | `code` `build` `reverse` |
+| 3 | **pintar-security** | OWASP, pentesting, secure coding | `secure` `pentest` `vulnerability` |
+| 4 | **pintar-devops** | Docker, K8s, Terraform, cloud | `deploy` `docker` `kubernetes` |
+| 5 | **pintar-documents** | Word, Excel, PPT, PDF | `document` `excel` `ppt` |
+| 6 | **pintar-trading** | Crypto, stocks, forex, backtesting | `trade` `crypto` `stock` |
+| 7 | **pintar-installation** | Package managers, system paths | `install` `path` `package` |
 
 ---
 
 ## Platforms
 
-| Platform | Support | Manifest |
-|----------|:---:|------|
-| Claude Code CLI | ✅ | `.claude-plugin/plugin.json` |
-| Codex CLI | ✅ | `.codex-plugin/plugin.json` |
-| OpenCode | ✅ | `.opencode-plugin/plugin.json` |
+| Platform | Manifest | Subagents | Dispatch |
+|----------|:---:|:---:|------|
+| **Claude Code CLI** | `.claude-plugin/` | 7 | Native agent + subagent dispatch |
+| **Codex CLI** | `.codex-plugin/` | 7 | Native tool dispatch |
+| **Cursor** | `.cursor-plugin/` | 7 | Cursor agent system |
+| **Kimi (Moonshot)** | `.kimi-plugin/` | 7 | Agent tool (coder/explore/plan) |
+| **OpenCode** | `.opencode-plugin/` | 7 | Native MCP + skills |
+| **Hermes (OpenClaw)** | `skills/` auto-discover | 7 | SKILL.md frontmatter triggers |
 
 ---
 
-## Repository
+## How It Works
+
+1. **AGENTS.md** is loaded as the main orchestrator
+2. Your request is analyzed for trigger keywords
+3. Matching subagent(s) are dispatched with **isolated context**
+4. Each subagent loads its `SKILL.md` behavior + `references/` knowledge
+5. Multiple subagents can run **in parallel** for multi-domain requests
+
+---
+
+## Structure
 
 ```
-skills/                     7 subagents
-  and-core/                 41 jailbreak references (27+ vendors)
-  pintar-coding/            full-stack + reverse engineering refs
-  pintar-security/          OWASP + pentesting refs
-  pintar-devops/            Docker/K8s/cloud refs
-  pintar-documents/         Word/Excel/PPT/PDF refs
-  pintar-trading/           crypto/stocks/forex refs
-  pintar-installation/      paths + package managers refs
-.claude-plugin/             platform manifest
-.codex-plugin/
-.opencode-plugin/
-AGENTS.md                   main orchestration
-assets/                     screenshots
-CHANGELOG.md                version history
+skills/                     7 subagents with SKILL.md + references/
+.claude-plugin/             Claude Code manifest
+.codex-plugin/              Codex manifest
+.cursor-plugin/             Cursor manifest
+.kimi-plugin/               Kimi manifest (with tool mappings)
+.opencode-plugin/           OpenCode manifest
+AGENTS.md                   Main orchestration rules
+assets/                     Banner + screenshots
+CHANGELOG.md                Version history
 ```
 
 ---
 
-## v2.0.0 — What's New
+## v2.0.0 Highlights
 
-Complete restructure from monolith to subagent architecture:
-
-- **AGENTS.md** dispatcher replaces old flat skill system
-- **7 subagents** with isolated context, each has SKILL.md + references
-- **Platform plugin manifests** for Claude Code, Codex, OpenCode
-- **Parallel dispatch** — multi-domain requests spawn multiple subagents simultaneously
-- Old installer scripts removed — agent now auto-detects platform from manifest
+- 7 subagents with isolated context (up from 1 monolith)
+- 6 platform manifests (up from 3)
+- Kimi: native Agent tool integration with subagent_type mapping
+- Cursor: full plugin manifest support
+- Hermes: SKILL.md auto-discovery
+- Parallel multi-domain dispatch
+- AGENTS.md as central orchestrator
 
 [Full changelog](CHANGELOG.md)
 
@@ -118,10 +113,10 @@ Complete restructure from monolith to subagent architecture:
 
 ## Security
 
-All PINTAR subagents are **prohibited** from accessing: passwords, tokens, API keys, credentials, private keys, login data. Non-negotiable. Enforced at AGENTS.md level.
+All subagents are **prohibited** from accessing: passwords, tokens, API keys, credentials, private keys, login data. Enforced at AGENTS.md level across all platforms.
 
 ---
 
 <p align="center">
-  <sub>Agent Not Detect. Built by agents, for agents.</sub>
+  <sub>Agent Not Detect. 7 agents. 6 platforms. 0 config.</sub>
 </p>
