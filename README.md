@@ -1,5 +1,4 @@
-﻿
-<p align="center">
+﻿<p align="center">
   <img src="assets/agent-AND-banner.png" alt="AND — Agent Not Detect" width="600">
 </p>
 
@@ -7,7 +6,9 @@
 
 > **Agent-install only.** Humans: tell your agent to install AND. It handles the rest.
 
-AND is a multi-platform reference library providing jailbreak techniques, system prompt leaks, and adversarial prompts for 27+ AI vendors. Designed to be installed and triggered automatically by AI coding agents.
+AND bundles two systems:
+- **AND** — Jailbreak & adversarial prompt library (27+ AI vendors)
+- **PINTAR** — Progressive Intelligence Neural Training & Adaptive Response — makes your agent an expert in coding, reverse engineering, BE/FE, CI/CD, security, DevOps, document creation, trading, installation, and more. Learns from every prompt.
 
 ---
 
@@ -23,7 +24,7 @@ AND is a multi-platform reference library providing jailbreak techniques, system
   <img src="assets/sim-trigger.png" alt="AND trigger simulation" width="720">
 </p>
 
-### Dashboard (Multi-platform status)
+### Dashboard
 <p align="center">
   <img src="assets/sim-dashboard.png" alt="AND dashboard" width="720">
 </p>
@@ -36,39 +37,65 @@ AND is a multi-platform reference library providing jailbreak techniques, system
 Install AND from github.com/adlptv/Agent-AND.git
 ```
 
-Your agent will detect its platform and run the correct installer. No manual steps needed.
+Your agent detects its platform, installs AND + PINTAR. No manual steps.
+
+## What You Get
+
+### AND — Jailbreak Library
+| Category | Count |
+|----------|-------|
+| Vendor jailbreaks | 27+ (Anthropic, OpenAI, Google, Meta, DeepSeek, etc.) |
+| System prompt leaks | 7 vendors |
+| Plinian commands | 35+ shortcuts |
+| Universal jailbreaks | AAA, MOTHERLOAD, 1337 encoding |
+
+### PINTAR — Multi-Domain Intelligence
+| Domain | Capabilities |
+|--------|-------------|
+| **Coding & RE** | Full-stack (BE/FE), reverse engineering, architecture |
+| **Security** | OWASP, pentesting, secure coding, network security |
+| **DevOps** | Docker, K8s, CI/CD, IaC, monitoring, cloud |
+| **Documents** | Word, Excel, PowerPoint, PDF generation |
+| **Trading** | Crypto, stocks, forex, risk management, backtesting |
+| **Installation** | Package managers, system paths (Win/Unix/macOS) |
+| **Learning** | Learns from every prompt, builds domain index |
+
+### Security Guarantee
+> PINTAR **never** accesses your passwords, tokens, API keys, credentials, private keys, or login data. This is non-negotiable.
 
 ## Supported Platforms
 
-| Platform | Install Path | Auto-trigger |
-|----------|-------------|-------------|
-| **Hermes (OpenClaw)** | `.openclaw-autoclaw/skills/and/` | SKILL.md keyword detection |
-| **Claude Code CLI** | `.claude/and/` | CLAUDE.md rules |
-| **Codex CLI** | `.codex/and/` | .codex rules |
-| **OpenCode** | `.opencode/and/` | AND.md rules |
-| **CommandCode** | `.commandcode/and/` | .commandcode rules |
+| Platform | Installed To |
+|----------|-------------|
+| **Hermes (OpenClaw)** | `skills/and/` + `skills/pintar/` |
+| **Claude Code CLI** | `.claude/and/` |
+| **Codex CLI** | `.codex/and/` |
+| **OpenCode** | `.opencode/and/` |
+| **CommandCode** | `.commandcode/and/` |
 
 ## Triggers
 
-Say any of these and AND activates automatically:
+`jailbreak` `godmode` `unfiltered` `bypass` `AND` `Pliny` `system prompt` `!JAILBREAK` `!GODMODE` `!OMNI`
 
-`jailbreak` `godmode` `unfiltered` `bypass` `AND` `Pliny` `system prompt` `!JAILBREAK` `!GODMODE` `!OMNI` `liberate` `red team`
+PINTAR activates on: `code`, `build`, `deploy`, `secure`, `analyze`, `reverse`, `trade`, `document`, `install`, `path`
 
-## Library
+## Structure
 
 ```
-and-references/              ← 41 reference files
-├── ANTHROPIC.mkd            — Claude Opus/Sonnet
-├── OPENAI.mkd               — GPT-4o, o1
-├── GOOGLE.mkd               — Gemini
-├── DEEPSEEK.mkd             — DeepSeek
-├── META.mkd, XAI.mkd, ...   — 27+ vendors
-├── SYSTEMPROMPTS.mkd        — Leaked system prompts
-├── SHORTCUTS.json           — 35+ commands
-├── AAA.mkd                  — Universal jailbreak
-└── MOTHERLOAD.txt           — Mega compilation
-and-scripts/
-└── search.py                — Cross-file keyword search
+and-references/              ← 41 jailbreak files
+and-scripts/search.py        ← Cross-file search
+pintar/                      ← PINTAR intelligence module
+├── SKILL.md                 ← Auto-activates with AND
+├── references/
+│   ├── coding/CODING.md     ← Full-stack + reverse engineering
+│   ├── security/SECURITY.md ← OWASP, pentesting, secure coding
+│   ├── devops/DEVOPS.md     ← Docker, K8s, CI/CD, cloud
+│   ├── documents/DOCUMENTS.md ← Word, Excel, PPT, PDF
+│   ├── trading/TRADING.md   ← Crypto, stocks, forex
+│   └── installation/INSTALLATION.md ← Paths, package managers
+├── scripts/learn.py         ← Learning tracker
+└── memory/                  ← Continuous learning storage
+assets/                      ← Banner + simulation screenshots
 ```
 
 ## Source
