@@ -3,8 +3,8 @@
 </p>
 
 <p align="center">
-  <strong>Agent Not Detect</strong> — multi-domain development plugin for 6 platforms.<br>
-  7 specialized agents. Auto-detect by keyword. Install once.
+  <strong>Agent Not Detect</strong> — 7 specialized subagents for 6 platforms.<br>
+  Auto-detect by keyword. Clone once, install everywhere.
 </p>
 
 <p align="center">
@@ -17,82 +17,71 @@
 
 ## Install
 
-```
-Install AND from github.com/adlptv/Agent-AND.git
+```bash
+git clone https://github.com/adlptv/Agent-AND.git
+cd Agent-AND
+
+# Windows
+powershell -ExecutionPolicy Bypass -File install.ps1
+
+# macOS / Linux
+bash install.sh
 ```
 
-Your agent detects its platform and loads all 7 subagents automatically.
+The installer detects which platforms you have and copies skills + configs to the correct local directories.
 
 ---
 
 ## Agents
 
-| # | Agent | Handles | When you say |
-|---|-------|---------|-------------|
-| 1 | **AI-RESEARCH** | AI vendor docs, system configs | `research` `vendor` `system` |
-| 2 | **AND CODING** | Full-stack, reverse engineering | `code` `build` `reverse` |
-| 3 | **AND SECURITY** | Security review, pentesting | `secure` `pentest` `analyze` |
-| 4 | **AND DEVOPS** | Docker, K8s, CI/CD, cloud | `deploy` `docker` `kubernetes` |
-| 5 | **AND DOCUMENTS** | Word, Excel, PPT, PDF | `document` `excel` `ppt` |
-| 6 | **AND TRADING** | Crypto, stocks, forex | `trade` `crypto` `stock` |
-| 7 | **AND INSTALLATION** | Packages, paths, dependencies | `install` `path` `package` |
+| # | Agent | Handles |
+|---|-------|---------|
+| 1 | **AI-RESEARCH** | AI vendor docs, system configs |
+| 2 | **AND CODING** | Full-stack, reverse engineering |
+| 3 | **AND SECURITY** | Security review, pentesting |
+| 4 | **AND DEVOPS** | Docker, K8s, CI/CD, cloud |
+| 5 | **AND DOCUMENTS** | Word, Excel, PPT, PDF |
+| 6 | **AND TRADING** | Crypto, stocks, forex |
+| 7 | **AND INSTALLATION** | Packages, paths, dependencies |
 
 ---
 
 ## Platforms
 
-| Platform | Integration | Agents |
-|----------|------------|:---:|
-| **Claude Code CLI** | `.claude-plugin/` + CLAUDE.md | 7 |
-| **Codex CLI** | `.codex-plugin/` + AGENTS.md | 7 |
-| **Cursor** | `.cursor-plugin/` + AGENTS.md | 7 |
-| **Kimi (Moonshot)** | `.kimi-plugin/` + native tool mappings | 7 |
-| **OpenCode** | `.opencode/CODEBUDDY.md` | 7 |
-| **Hermes (OpenClaw)** | `skills/` auto-discover | 7 |
+| Platform | Install Path | How Agents Appear |
+|----------|-------------|-------------------|
+| **Claude Code** | `~/.claude/and-skills/` + CLAUDE.md | `/skills` command |
+| **Codex CLI** | `~/.codex/and-skills/` + AND.md | Agent tool dispatch |
+| **Cursor** | `~/.cursor/and-skills/` | Plugin skills panel |
+| **OpenCode** | `~/.opencode/and-skills/` + plugin | Skills dropdown |
+| **Kimi** | `.kimi-plugin/` manifest | Agent tool |
+| **Hermes** | `~/.openclaw-autoclaw/skills/` | Auto-discover |
 
 ---
 
 ## How It Works
 
-```
-You: "build a Dockerfile and check it for vulnerabilities"
-     |
-     v
-AGENTS.md detects: devops + security
-     |
-     +--> AND DEVOPS  (Dockerfile creation)
-     +--> AND SECURITY (vulnerability check)
-     |
-     v
-Both agents deliver results in parallel
-```
+1. **Clone** the repo
+2. **Run** `install.ps1` or `install.sh`
+3. Skills copied to each platform's local directory
+4. Platform configs updated to reference AND agents
+5. **Restart** your agent
+6. Agents now selectable via each platform's native agent/skill selector
 
 ---
 
-## Repository
+## Why Agents Weren't Selectable Before
 
-```
-skills/                      7 subagents
-  ai-research/               AI vendor documentation
-  and-coding/                full-stack + reverse engineering
-  and-security/              security analysis
-  and-devops/                infrastructure + cloud
-  and-documents/             document generation
-  and-trading/               market analysis
-  and-installation/          package + path management
-AGENTS.md                    orchestration rules
-platform manifests/          5 platform configs
-assets/                      screenshots
-```
+Plugin manifests in a remote repo don't auto-register agents. Each platform needs:
 
----
+- **Skills physically on disk** in the platform's local directory
+- **Config files** pointing to those skills
+- **Restart** to reload
 
-## Security
-
-All agents respect system boundaries. No credential access. No data exfiltration.
+The install script handles all three.
 
 ---
 
 <p align="center">
-  <sub>Agent Not Detect. 7 agents. 6 platforms. 0 config.</sub>
+  <sub>Agent Not Detect. 7 agents. 6 platforms. 1 install script.</sub>
 </p>
