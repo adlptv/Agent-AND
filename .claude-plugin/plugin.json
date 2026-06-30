@@ -1,11 +1,24 @@
 {
-  "name": "agent-and",
-  "description": "Multi-domain development plugin with 7 specialized subagents: AI vendor research, full-stack coding, security analysis, devops, document creation, trading, and installation management.",
-  "version": "2.0.0",
-  "author": { "name": "adlptv" },
-  "homepage": "https://github.com/adlptv/Agent-AND",
-  "repository": "https://github.com/adlptv/Agent-AND.git",
-  "license": "MIT",
-  "keywords": ["development", "coding", "security", "devops", "documents", "trading", "research", "subagents", "skills"],
-  "skills": "./skills/"
+    "name":  "agent-and",
+    "description":  "Multi-domain development plugin with 7 specialized subagents: AI vendor research, full-stack coding, security analysis, devops, document creation, trading, and installation management.",
+    "version":  "2.0.0",
+    "author":  {
+                   "name":  "adlptv"
+               },
+    "homepage":  "https://github.com/adlptv/Agent-AND",
+    "repository":  "https://github.com/adlptv/Agent-AND.git",
+    "license":  "MIT",
+    "keywords":  [
+                     "development",
+                     "coding",
+                     "security",
+                     "devops",
+                     "documents",
+                     "trading",
+                     "research",
+                     "subagents",
+                     "skills"
+                 ],
+    "skills":  "./skills/",
+    "hooks":  "./hooks/hooks.json"
 }
