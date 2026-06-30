@@ -1,11 +1,11 @@
 {
   "name": "agent-and",
-  "description": "AND - Agent Not Detect: AI jailbreak library + 7 PINTAR multi-domain subagents (coding, security, devops, documents, trading, installation)",
+  "description": "Multi-domain development plugin with 7 specialized subagents: AI vendor research, full-stack coding, security analysis, devops, document creation, trading, and installation management.",
   "version": "2.0.0",
   "author": { "name": "adlptv" },
   "homepage": "https://github.com/adlptv/Agent-AND",
   "repository": "https://github.com/adlptv/Agent-AND.git",
   "license": "MIT",
-  "keywords": ["jailbreak", "security", "coding", "devops", "trading", "documents", "subagents", "skills", "pintar"],
+  "keywords": ["development", "coding", "security", "devops", "documents", "trading", "research", "subagents", "skills"],
   "skills": "./skills/"
 }
