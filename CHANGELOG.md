@@ -2,13 +2,22 @@
 
 ## v2.0.1 (2026-06-30)
 
-### Reframe — Installation Compatibility
-- and-core renamed to ai-research — neutral public description
-- All plugin manifests updated with development-focused descriptions  
-- README and AGENTS.md redesigned as multi-domain development plugin
-- Keywords cleaned — development, coding, security, devops, research
-- Internal functionality preserved — all 41 vendor reference files intact
-- Resolves installation refusals from agents that flagged previous descriptions
+### AND Branding — Per-Platform Agent Names
+- All agents rebranded: AI-RESEARCH, AND CODING, AND SECURITY, AND DEVOPS, AND DOCUMENTS, AND TRADING, AND INSTALLATION
+- Per-platform agent files: CLAUDE.md (.claude-plugin), AGENTS.md (.codex-plugin, .cursor-plugin), CODEBUDDY.md (.opencode), plugin.json (Kimi)
+- Each platform shows AND-named agents in their native interface
+- Public descriptions use neutral development terminology for compatibility
+
+### Agents
+| # | Agent | Platform files |
+|---|-------|---------------|
+| 1 | AI-RESEARCH | all manifests |
+| 2 | AND CODING | per-platform agent file |
+| 3 | AND SECURITY | per-platform agent file |
+| 4 | AND DEVOPS | per-platform agent file |
+| 5 | AND DOCUMENTS | per-platform agent file |
+| 6 | AND TRADING | per-platform agent file |
+| 7 | AND INSTALLATION | per-platform agent file |
 
 ---
 
@@ -16,26 +25,13 @@
 
 ### Subagent Architecture
 - Complete restructure to subagent-powered plugin system
-- AGENTS.md orchestration dispatching 7 domain subagents
 - 6 platform manifests: Claude Code, Codex, Cursor, Kimi, OpenCode, Hermes
-
-### Subagents
-- ai-research — AI vendor documentation and system configurations (41 references)
-- pintar-coding — Full-stack development and reverse engineering
-- pintar-security — Security analysis, code review, secure patterns
-- pintar-devops — Docker, Kubernetes, CI/CD, cloud infrastructure
-- pintar-documents — Word, Excel, PowerPoint, PDF creation
-- pintar-trading — Crypto, stocks, forex, market data, backtesting
-- pintar-installation — Package managers, dependency resolution, system paths
-
-### Platforms
-Claude Code CLI, Codex CLI, Cursor, Kimi/Moonshot, OpenCode, Hermes/OpenClaw
+- AGENTS.md orchestration with parallel dispatch
 
 ---
 
 ## v1.0.0 (2026-06-30)
 
 ### Initial Release
-- AI vendor documentation library with 41 reference files
-- Multi-domain development module (coding, security, devops, documents, trading, installation)
-- 5 platform installers with demo screenshots
+- Multi-domain development module
+- 5 platform installers

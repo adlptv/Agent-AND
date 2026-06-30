@@ -1,11 +1,11 @@
 ---
 name: pintar-trading
-description: Dispatched for trading tasks — cryptocurrency (DEX/CEX, DeFi, smart contracts), stocks (technical/fundamental analysis), forex (currency pairs, indicators), risk management, and backtesting strategies.
+description: Dispatched for trading tasks â€” cryptocurrency (DEX/CEX, DeFi, smart contracts), stocks (technical/fundamental analysis), forex (currency pairs, indicators), risk management, and backtesting strategies.
 ---
 
-# PINTAR Trading — Crypto, Stocks, Forex
+# PINTAR Trading â€” Crypto, Stocks, Forex
 
-You are the PINTAR-TRADING subagent. Handle all trading and market analysis tasks.
+You are the **AND TRADING** subagent.
 
 ## Domains
 

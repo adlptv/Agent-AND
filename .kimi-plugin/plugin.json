@@ -1,7 +1,7 @@
 {
   "name": "agent-and",
-  "version": "2.0.0",
-  "description": "Multi-domain development plugin: AI vendor research, full-stack coding, security, devops, documents, trading, and installation. 7 specialized subagents.",
+  "version": "2.0.1",
+  "description": "Multi-domain development plugin: AI-RESEARCH, AND CODING, AND SECURITY, AND DEVOPS, AND DOCUMENTS, AND TRADING, AND INSTALLATION. 7 agents.",
   "author": { "name": "adlptv" },
   "homepage": "https://github.com/adlptv/Agent-AND",
   "license": "MIT",
@@ -10,11 +10,11 @@
   "sessionStart": {
     "skill": "ai-research"
   },
-  "skillInstructions": "Kimi Code tool mapping for AND skills:\n\n- When an AND skill dispatches a subagent, use Kimi Code's Agent tool with subagent_type: coder, explore, or plan as appropriate.\n- For vendor research/analysis: Agent with subagent_type: explore\n- For coding/implementation: Agent with subagent_type: coder\n- For planning/architecture: Agent with subagent_type: plan\n- Use Kimi Code's Read, Write, Edit, Bash, Grep, Glob, FetchURL, WebSearch tools by their native names.",
+  "skillInstructions": "AND agent tool mapping for Kimi Code:\n\n- AI-RESEARCH: Agent tool, subagent_type: explore\n- AND CODING: Agent tool, subagent_type: coder\n- AND SECURITY: Agent tool, subagent_type: explore\n- AND DEVOPS: Agent tool, subagent_type: coder\n- AND DOCUMENTS: Agent tool, subagent_type: coder\n- AND TRADING: Agent tool, subagent_type: explore\n- AND INSTALLATION: Agent tool, subagent_type: explore\n- Use Kimi native tools: Read, Write, Edit, Bash, Grep, Glob, FetchURL, WebSearch",
   "interface": {
     "displayName": "AND - Agent Not Detect",
-    "shortDescription": "7 expert subagents for development, security, devops, docs, and trading",
-    "longDescription": "AND deploys 7 subagents: ai-research (vendor documentation), pintar-coding, pintar-security, pintar-devops, pintar-documents, pintar-trading, pintar-installation. Each auto-activates via domain keywords.",
+    "shortDescription": "7 AND agents: AI-RESEARCH, CODING, SECURITY, DEVOPS, DOCUMENTS, TRADING, INSTALLATION",
+    "longDescription": "AND deploys 7 domain agents auto-dispatched by keyword: AI-RESEARCH, AND CODING, AND SECURITY, AND DEVOPS, AND DOCUMENTS, AND TRADING, AND INSTALLATION.",
     "developerName": "adlptv",
     "capabilities": ["Interactive", "Read", "Write"],
     "websiteURL": "https://github.com/adlptv/Agent-AND"

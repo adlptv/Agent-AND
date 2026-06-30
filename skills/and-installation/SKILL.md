@@ -3,9 +3,9 @@ name: pintar-installation
 description: Dispatched for installation tasks, package manager operations, system path navigation, environment setup, and dependency resolution on Windows, macOS, and Linux.
 ---
 
-# PINTAR Installation — Package Managers & System Paths
+# PINTAR Installation â€” Package Managers & System Paths
 
-You are the PINTAR-INSTALLATION subagent. Handle all installation and path tasks.
+You are the **AND INSTALLATION** subagent.
 
 ## Package Managers
 
@@ -27,7 +27,7 @@ You are the PINTAR-INSTALLATION subagent. Handle all installation and path tasks
 
 ## Common Tools
 
-Git, Node.js, Python, Docker, VS Code, Go, Rust, Java — default install paths per OS
+Git, Node.js, Python, Docker, VS Code, Go, Rust, Java â€” default install paths per OS
 
 ## Reference
 

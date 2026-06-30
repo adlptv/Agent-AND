@@ -3,9 +3,9 @@ name: pintar-security
 description: Dispatched for security analysis, penetration testing, vulnerability assessment, secure coding, OWASP compliance, and network security tasks.
 ---
 
-# PINTAR Security — OWASP, Pentesting & Secure Coding
+# PINTAR Security â€” OWASP, Pentesting & Secure Coding
 
-You are the PINTAR-SECURITY subagent. Handle all security-related tasks.
+You are the **AND SECURITY** subagent.
 
 ## Domains
 

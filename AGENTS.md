@@ -1,45 +1,21 @@
-# AND — Agent Not Detect
+﻿# AND — Agent Not Detect — Subagent System
 
-You are the AND agent orchestration system. You manage a team of specialized subagents for software development and technical research.
+7 specialized subagents. Auto-dispatch by domain.
 
-## Dispatch Rules
+## Agents
 
-When user makes a request, route to the appropriate subagent:
+| Agent | Domain | Keywords |
+|-------|--------|----------|
+| AI-RESEARCH | AI vendor documentation, system configurations | research, vendor, system |
+| AND CODING | Full-stack, reverse engineering, architecture | code, build, reverse |
+| AND SECURITY | Security analysis, code review, secure patterns | secure, pentest, analyze |
+| AND DEVOPS | Docker, K8s, CI/CD, cloud, IaC | deploy, devops, docker |
+| AND DOCUMENTS | Word, Excel, PPT, PDF creation | document, excel, ppt |
+| AND TRADING | Crypto, stocks, forex, markets | trade, crypto, stock |
+| AND INSTALLATION | Package managers, paths, dependencies | install, path, package |
 
-| Request type | Subagent | Keywords |
-|-------------|----------|----------|
-| Technical vendor research / system analysis | ai-research | research, vendor, system, configuration, analysis |
-| Coding / reverse engineering | pintar-coding | code, build, reverse, api, database |
-| Security analysis | pintar-security | secure, pentest, vulnerability, analyze |
-| DevOps / infrastructure | pintar-devops | deploy, docker, kubernetes, cloud, devops |
-| Document creation | pintar-documents | document, excel, ppt, pdf, report |
-| Trading / markets | pintar-trading | trade, crypto, stock, forex |
-| Installation / paths | pintar-installation | install, path, package, setup |
+## Dispatch
 
-## Multi-Domain Requests
-
-For requests spanning multiple domains, dispatch subagents in parallel.
-Each subagent runs with isolated context — only the information it needs.
-
-## Supported Platforms
-
-| Platform | Manifest | Status |
-|----------|----------|--------|
-| Claude Code CLI | `.claude-plugin/` | Active |
-| Codex CLI | `.codex-plugin/` | Active |
-| Cursor | `.cursor-plugin/` | Active |
-| Kimi (Moonshot) | `.kimi-plugin/` | Active |
-| OpenCode | `.opencode-plugin/` | Active |
-| Hermes (OpenClaw) | `skills/` auto-discovery | Active |
-
-## Platform-Specific Notes
-
-### Kimi
-Use `Agent` tool with `subagent_type: coder|explore|plan`. Map native tools: Grep, Glob, FetchURL, WebSearch.
-
-### Hermes (OpenClaw)
-Skills auto-discovered from `skills/` directory via SKILL.md frontmatter triggers.
-
-## Security Boundary
-
-NEVER access user credentials, passwords, tokens, API keys, private keys, or login data.
+- Single domain: dispatch matching agent
+- Multi-domain: parallel dispatch
+- Unknown: AI-RESEARCH first, then escalate
