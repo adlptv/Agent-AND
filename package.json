@@ -1,0 +1,12 @@
+﻿{
+  "name": "agent-and",
+  "version": "2.0.1",
+  "description": "AND - Agent Not Detect: 7 multi-domain agents",
+  "type": "module",
+  "main": ".opencode/plugins/and.js",
+  "keywords": ["pi-package", "skills", "agents", "research", "coding", "security", "devops"],
+  "pi": {
+    "extensions": ["./.pi/extensions/and.ts"],
+    "skills": ["./skills"]
+  }
+}

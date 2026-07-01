@@ -3,8 +3,9 @@
 </p>
 
 <p align="center">
-  <strong>Agent Not Detect</strong> &mdash; 7 agents. Install via your own agent.<br>
-  No manual steps. No config files.
+  <strong>Agent Not Detect</strong> &mdash; 7 multi-domain agents.<br>
+  Plugin + Skills for Claude Code, Codex, Gemini, Pi Code.<br>
+  Skills-only for Hermes, Cursor, Aider.
 </p>
 
 ---
@@ -17,65 +18,77 @@ Tell your AI agent:
 Install AND from github.com/adlptv/Agent-AND.git
 ```
 
-Your agent reads `AGENTS.md`, clones the repo, **detects its own platform and paths**, then installs all 7 agents to the correct local directory. No manual work. Restart, done.
+Your agent reads `AGENTS.md`, detects its platform, and installs automatically.
 
-### What your agent does
+---
 
-1. Clones this repo
-2. Reads `AGENTS.md` for install instructions
-3. Detects its platform (Claude Code / Codex / Cursor / OpenCode / Kimi / Hermes)
-4. Finds the correct install path for that platform
-5. Copies `skills/` to the right directory
-6. Copies platform-specific config files
-7. Reports "AND v2.0.1 installed. 7 agents ready."
+## Supported Platforms
+
+### Plugin + Skills (full integration)
+
+| Platform | Manifest | Install | Skills | Sub-agents |
+|----------|----------|---------|:---:|:---:|
+| **Claude Code** | `.claude-plugin/plugin.json` | `/plugin` command | `~/.claude/and-skills/` | via `agents/` |
+| **Codex CLI** | `.codex-plugin/plugin.json` | `codex plugin add` | `~/.codex/and-skills/` | via `agents/` |
+| **Gemini CLI** | `gemini-extension.json` | `gemini extensions link` | `~/.gemini/and-skills/` | via `agents/` |
+| **Pi Code** | `package.json` (pi field) | auto-load | `skills/` (bundled) | via extension |
+
+### Skills Only (manual copy)
+
+| Platform | Skills Path | Load Mechanism |
+|----------|------------|---------------|
+| **Hermes (OpenClaw)** | `~/.openclaw-autoclaw/skills/` | Auto-discover SKILL.md |
+| **Cursor** | `~/.cursor/and-skills/` | `.cursorrules` reference |
+| **Aider** | `~/.aider/and-skills/` | Config reference |
 
 ---
 
 ## Agents
 
-| # | Agent | What It Does |
-|---|-------|-------------|
-| 1 | **AI-RESEARCH** | AI vendor documentation, system configs (41 vendor files) |
-| 2 | **AND CODING** | Full-stack development, reverse engineering |
+| # | Agent | Domain |
+|---|-------|--------|
+| 1 | **AI-RESEARCH** | AI vendor documentation, system configs, technical analysis |
+| 2 | **AND CODING** | Full-stack, reverse engineering, architecture |
 | 3 | **AND SECURITY** | Security analysis, OWASP, pentesting |
 | 4 | **AND DEVOPS** | Docker, Kubernetes, CI/CD, cloud |
-| 5 | **AND DOCUMENTS** | Word, Excel, PowerPoint, PDF generation |
+| 5 | **AND DOCUMENTS** | Word, Excel, PowerPoint, PDF |
 | 6 | **AND TRADING** | Crypto, stocks, forex, backtesting |
 | 7 | **AND INSTALLATION** | Package managers, system paths |
 
 ---
 
-## Platforms & Install Paths
+## How It Works
 
-| Platform | Skills Path | Config |
-|----------|------------|--------|
-| **Claude Code** | `~/.claude/and-skills/` | `~/.claude/CLAUDE.md` |
-| **Codex CLI** | `~/.codex/and-skills/` | `~/.codex/AND.md` |
-| **Cursor** | `~/.cursor/and-skills/` | `~/.cursor/AGENTS.md` |
-| **OpenCode (Linux)** | `~/.config/opencode/and-skills/` | `~/.config/opencode/plugins/and.js` |
-| **OpenCode (macOS)** | `~/Library/Application Support/opencode/and-skills/` | config dir |
-| **OpenCode (Windows)** | `%APPDATA%/opencode/and-skills/` | config dir |
-| **Kimi** | `skills/` (repo-relative) | `.kimi-plugin/plugin.json` |
-| **Hermes (OpenClaw)** | `~/.openclaw-autoclaw/skills/` | Auto-discover |
+1. You tell your agent to install AND
+2. Agent clones repo, reads `AGENTS.md`
+3. Agent detects its platform type (Plugin+Skills or Skills-Only)
+4. Agent copies `skills/` to the correct local directory
+5. Agents appear as selectable skills/subagents in your platform
 
 ---
 
 ## Repository
 
 ```
-skills/                      7 agents (each with SKILL.md + references/)
-  ai-research/               41 vendor reference files
-  and-coding/                full-stack + reverse engineering refs
-  and-security/              OWASP + pentesting refs
-  and-devops/                Docker, K8s, cloud refs
-  and-documents/             Word, Excel, PPT, PDF refs
-  and-trading/               crypto, stocks, forex refs
-  and-installation/          package managers + paths refs
-AGENTS.md                    self-install guide for any agent
-README.md                    this file
-install.ps1 / install.sh     manual install scripts (fallback)
-CHANGELOG.md                 version history
-assets/                      screenshots
+skills/                 7 agents (SKILL.md + references/)
+  ai-research/          41 vendor reference files
+  and-coding/           full-stack + reverse engineering
+  and-security/         OWASP + pentesting refs
+  and-devops/           Docker, K8s, cloud refs
+  and-documents/        Word, Excel, PPT, PDF refs
+  and-trading/          crypto, stocks, forex refs
+  and-installation/     package managers + paths refs
+AGENTS.md               self-install guide for any agent
+install.ps1 / install.sh   manual fallback scripts
+GEMINI.md               Gemini CLI context file
+gemini-extension.json   Gemini CLI extension manifest
+package.json            Pi Code package
+.claude-plugin/         Claude Code manifest
+.codex-plugin/          Codex CLI manifest
+.opencode/              OpenCode JS plugin
+.pi/                    Pi Code extension
+assets/                 screenshots
+CHANGELOG.md            version history
 ```
 
 ---
@@ -83,9 +96,3 @@ assets/                      screenshots
 ## Source
 
 <https://github.com/adlptv/Agent-AND.git>
-
----
-
-<p align="center">
-  <sub>Agent Not Detect. 7 agents. 6 platforms. Tell your agent to install.</sub>
-</p>
