@@ -12,24 +12,24 @@ git clone https://github.com/adlptv/Agent-AND.git /tmp/agent-and
 
 === PLUGIN + SKILLS ===
 
-### Claude Code (Anthropic)
+### Claude Code
 ```
 SKILLS="$HOME/.claude/and-skills"
 rm -rf "$SKILLS"
 cp -r /tmp/agent-and/skills "$SKILLS"
 cp /tmp/agent-and/.claude-plugin/CLAUDE.md "$HOME/.claude/CLAUDE.md"
 ```
-Load via: `/plugin install` from `.claude-plugin/plugin.json`
+Load: `/plugin install` from `.claude-plugin/plugin.json`
 
-### Codex CLI (OpenAI)
+### Codex CLI
 ```
 SKILLS="$HOME/.codex/and-skills"
 rm -rf "$SKILLS"
 cp -r /tmp/agent-and/skills "$SKILLS"
 ```
-Load via: `codex plugin add` from `.codex-plugin/plugin.json`
+Load: `codex plugin add` from `.codex-plugin/plugin.json`
 
-### Gemini CLI (Google)
+### Gemini CLI
 ```
 SKILLS="$HOME/.gemini/and-skills"
 rm -rf "$SKILLS"
@@ -37,7 +37,7 @@ cp -r /tmp/agent-and/skills "$SKILLS"
 cp /tmp/agent-and/GEMINI.md "$HOME/.gemini/GEMINI.md"
 cp /tmp/agent-and/gemini-extension.json "$HOME/.gemini/and-extension.json"
 ```
-Load via: `gemini extensions link /tmp/agent-and`
+Load: `gemini extensions link /tmp/agent-and`
 
 ### Pi Code
 ```
@@ -45,11 +45,22 @@ SKILLS="$HOME/.pi/and-skills"
 rm -rf "$SKILLS"
 cp -r /tmp/agent-and/skills "$SKILLS"
 ```
-Load via: package.json `"pi"` field
+Load: package.json `"pi"` field auto-load
+
+### Hermes Agent
+```
+SKILLS="$HOME/.hermes/skills"
+for d in /tmp/agent-and/skills/*/; do
+  name=$(basename "$d")
+  rm -rf "$SKILLS/$name"
+  cp -r "$d" "$SKILLS/$name"
+done
+```
+Load: `hermes plugins install https://github.com/adlptv/Agent-AND.git`
 
 === SKILLS ONLY ===
 
-### Hermes / OpenClaw
+### OpenClaw
 ```
 SKILLS_BASE="$HOME/.openclaw-autoclaw/skills"
 for d in /tmp/agent-and/skills/*/; do
@@ -58,7 +69,7 @@ for d in /tmp/agent-and/skills/*/; do
   cp -r "$d" "$SKILLS_BASE/$name"
 done
 ```
-Load via: `openclaw gateway restart`
+Load: `openclaw gateway restart`
 
 ### Cursor
 No plugin system. Copy skills for reference:
@@ -95,8 +106,9 @@ rm -rf /tmp/agent-and
 | Claude Code | Plugin + Skills | `/plugin install` or manual copy |
 | Codex CLI | Plugin + Skills | `codex plugin add` or manual copy |
 | Gemini CLI | Plugin + Skills | `gemini extensions link` or manual copy |
-| Pi Code | Plugin + Skills | package.json `"pi"` auto-load |
-| Hermes (OpenClaw) | Skills Only | Copy to `~/.openclaw-autoclaw/skills/` |
+| Pi Code | Plugin + Skills | `package.json` "pi" field auto-load |
+| Hermes Agent | Plugin + Skills | `hermes plugins install <url>` |
+| OpenClaw | Skills Only | Copy to `~/.openclaw-autoclaw/skills/` |
 | Cursor | Skills Only | Copy + `.cursorrules` |
 | Aider | Skills Only | Copy to `~/.aider/` |
 

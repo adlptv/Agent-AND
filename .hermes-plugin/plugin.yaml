@@ -1,0 +1,7 @@
+﻿name: and
+version: "2.0.1"
+description: "AND - Agent Not Detect: 7 multi-domain agents with AI vendor documentation, coding, security, devops, documents, trading, and installation"
+author: adlptv
+license: MIT
+homepage: "https://github.com/adlptv/Agent-AND"
+skills_dir: "./skills/"

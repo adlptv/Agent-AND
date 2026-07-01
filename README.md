@@ -4,8 +4,8 @@
 
 <p align="center">
   <strong>Agent Not Detect</strong> &mdash; 7 multi-domain agents.<br>
-  Plugin + Skills for Claude Code, Codex, Gemini, Pi Code.<br>
-  Skills-only for Hermes, Cursor, Aider.
+  Plugin + Skills for Claude Code, Codex, Gemini CLI, Pi Code, Hermes Agent.<br>
+  Skills-only for OpenClaw, Cursor, Aider.
 </p>
 
 ---
@@ -26,18 +26,19 @@ Your agent reads `AGENTS.md`, detects its platform, and installs automatically.
 
 ### Plugin + Skills (full integration)
 
-| Platform | Manifest | Install | Skills | Sub-agents |
-|----------|----------|---------|:---:|:---:|
-| **Claude Code** | `.claude-plugin/plugin.json` | `/plugin` command | `~/.claude/and-skills/` | via `agents/` |
-| **Codex CLI** | `.codex-plugin/plugin.json` | `codex plugin add` | `~/.codex/and-skills/` | via `agents/` |
-| **Gemini CLI** | `gemini-extension.json` | `gemini extensions link` | `~/.gemini/and-skills/` | via `agents/` |
-| **Pi Code** | `package.json` (pi field) | auto-load | `skills/` (bundled) | via extension |
+| Platform | Manifest | Install Command | Skills Path |
+|----------|----------|----------------|------------|
+| **Claude Code** | `.claude-plugin/plugin.json` | `/plugin install` | `~/.claude/and-skills/` |
+| **Codex CLI** | `.codex-plugin/plugin.json` | `codex plugin add` | `~/.codex/and-skills/` |
+| **Gemini CLI** | `gemini-extension.json` | `gemini extensions link` | `~/.gemini/and-skills/` |
+| **Pi Code** | `package.json` (pi field) | auto-load | `skills/` (bundled) |
+| **Hermes Agent** | `.hermes-plugin/plugin.yaml` | `hermes plugins install` | `~/.hermes/skills/` |
 
 ### Skills Only (manual copy)
 
 | Platform | Skills Path | Load Mechanism |
 |----------|------------|---------------|
-| **Hermes (OpenClaw)** | `~/.openclaw-autoclaw/skills/` | Auto-discover SKILL.md |
+| **OpenClaw** | `~/.openclaw-autoclaw/skills/` | Auto-discover SKILL.md |
 | **Cursor** | `~/.cursor/and-skills/` | `.cursorrules` reference |
 | **Aider** | `~/.aider/and-skills/` | Config reference |
 
@@ -83,8 +84,11 @@ install.ps1 / install.sh   manual fallback scripts
 GEMINI.md               Gemini CLI context file
 gemini-extension.json   Gemini CLI extension manifest
 package.json            Pi Code package
+after-install.md        Hermes Agent post-install message
 .claude-plugin/         Claude Code manifest
 .codex-plugin/          Codex CLI manifest
+.gemini-plugin/         Gemini CLI placeholder
+.hermes-plugin/         Hermes Agent manifest
 .opencode/              OpenCode JS plugin
 .pi/                    Pi Code extension
 assets/                 screenshots
