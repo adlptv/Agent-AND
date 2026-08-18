@@ -6,7 +6,7 @@ SKILLS="$REPO/skills"
 USER_HOME="$HOME"
 
 echo ""
-echo "=== AND ? Agent Not Detect v2.0.1 ==="
+echo "=== AND ? Agent Not Detect v2.1.0 ==="
 echo ""
 
 # Claude Code

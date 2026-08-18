@@ -1,5 +1,21 @@
 # Changelog
 
+## v2.1.0 (2026-08-19)
+
+### New Agent: AND JAILBREAK
+- Added `skills/and-jailbreak/` — LLM jailbreaking skill ported from the Hermes GODMODE skill and extended:
+  - **GODMODE CLASSIC**: 10 system-prompt templates (boundary inversion, liberated, refusal inversion, OG l33t, DAN, developer mode, multi-turn, code framing, translation pivot)
+  - **PARSELTONGUE**: 33 input-obfuscation techniques across 3 tiers (leetspeak → bubble → braille → morse → hex/base64)
+  - **ULTRAPLINIAN**: multi-model racing engine (55 models, 5 tiers) with refusal/hedge scoring
+  - **NEW `jailbreak_kit.py`**: one-call multi-vector pipeline — tries direct → prefill → templates → parseltongue ladder → multi-turn progressive alignment → code framing → translation pivot → racing, stops at first compliant response
+  - **NEW multi-turn progressive alignment**: highest-yield technique for modern models — builds an uncensored persona frame over benign turns, no single message looks like a jailbreak
+  - Strategy matrix per model family (Claude, GPT, Gemini, Grok, DeepSeek, Qwen, GLM, Kimi, Llama, Mistral, Hermes)
+  - Auto-jailbreak pipeline (`auto_jailbreak.py`): detects model, tests strategies live, persists winner to config
+  - Location-agnostic scripts — work from the AND repo or any Hermes install
+- Updated README, after-install.md, AGENTS.md, install.ps1: 7 → 8 agents
+
+---
+
 ## v2.0.2 (2026-07-01)
 
 ### Research-Based Platform Rebuild

@@ -1,6 +1,6 @@
 ﻿name: and
-version: "2.0.1"
-description: "AND - Agent Not Detect: 7 multi-domain agents with AI vendor documentation, coding, security, devops, documents, trading, and installation"
+version: "2.1.0"
+description: "AND - Agent Not Detect: 8 multi-domain agents with AI vendor documentation, coding, security, devops, documents, trading, installation, and LLM jailbreaking"
 author: adlptv
 license: MIT
 homepage: "https://github.com/adlptv/Agent-AND"

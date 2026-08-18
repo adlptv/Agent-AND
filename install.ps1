@@ -7,7 +7,7 @@ $user = $env:USERPROFILE
 $repo = Split-Path -Parent $MyInvocation.MyCommand.Path
 $skills = "$repo\skills"
 
-Write-Host "`n=== AND — Agent Not Detect v2.0.1 ===`n" -ForegroundColor Cyan
+Write-Host "`n=== AND — Agent Not Detect v2.1.0 ===`n" -ForegroundColor Cyan
 
 # ===== CLAUDE CODE =====
 $claudeCode = Get-Command claude -ErrorAction SilentlyContinue
@@ -68,7 +68,7 @@ if ($hermes -or $All) {
         Copy-Item -Recurse $sd.FullName $target -Force
         Write-Host "  Skill: $($sd.Name)" -ForegroundColor Green
     }
-    Write-Host "  All 7 skills registered" -ForegroundColor Green
+    Write-Host "  All 8 skills registered" -ForegroundColor Green
 }
 
 Write-Host "`n=== Done. Restart your agent to load AND agents. ===" -ForegroundColor Cyan
