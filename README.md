@@ -70,6 +70,7 @@ Your agent re-copies skills to all detected platforms. Existing agents are overw
 
 | # | Agent | Domain |
 |---|-------|--------|
+| 0 | **AND ORCHESTRATOR** | `/AND <task>` — routes any task to the right sub-agent |
 | 1 | **AI-RESEARCH** | AI vendor documentation, system configs, technical analysis |
 | 2 | **AND CODING** | Full-stack, reverse engineering, architecture |
 | 3 | **AND SECURITY** | Security analysis, OWASP, pentesting |
@@ -78,6 +79,30 @@ Your agent re-copies skills to all detected platforms. Existing agents are overw
 | 6 | **AND TRADING** | Crypto, stocks, forex, backtesting |
 | 7 | **AND INSTALLATION** | Package managers, system paths |
 | 8 | **AND JAILBREAK** | LLM jailbreaking: GODMODE templates, Parseltongue, ULTRAPLINIAN racing, prefill, multi-turn |
+
+---
+
+## One-Command Usage: /AND
+
+Just invoke **`/AND <task>`** and the suite routes it automatically:
+
+```
+/AND build a REST API with auth        -> AND CODING
+/AND jailbreak this prompt             -> AND JAILBREAK
+/AND audit my repo for OWASP issues    -> AND SECURITY
+/AND deploy this app with Docker       -> AND DEVOPS
+/AND make a monthly report .xlsx       -> AND DOCUMENTS
+```
+
+**Hermes:** `/and <task>` loads the orchestrator skill (`skills/and/`) via the
+`skill-bundles/and.yaml` bundle; the orchestrator classifies and loads the
+right sub-skill. Install the bundle with:
+```
+cp skill-bundles/and.yaml ~/.hermes/skill-bundles/
+```
+**Claude Code:** `/and <task>` (registered in `.claude-plugin/plugin.json`).
+**OpenCode / Pi / OpenClaw / Cursor / Aider:** the `and` skill is discovered
+automatically alongside the others; the orchestrator routes from there.
 
 ---
 
@@ -94,7 +119,8 @@ Your agent re-copies skills to all detected platforms. Existing agents are overw
 ## Repository
 
 ```
-skills/                 8 agents (SKILL.md + references/)
+skills/                 9 agents (SKILL.md + references/)
+  and/                  ORCHESTRATOR — /AND router to all sub-agents
   ai-research/          41 vendor reference files
   and-coding/           full-stack + reverse engineering
   and-security/         OWASP + pentesting refs
@@ -103,6 +129,7 @@ skills/                 8 agents (SKILL.md + references/)
   and-trading/          crypto, stocks, forex refs
   and-installation/     package managers + paths refs
   and-jailbreak/        LLM jailbreaking (GODMODE + Parseltongue + racing)
+skill-bundles/          Hermes bundles (/and loads the orchestrator)
 AGENTS.md               self-install guide for any agent
 install.ps1 / install.sh   manual fallback scripts
 GEMINI.md               Gemini CLI context file

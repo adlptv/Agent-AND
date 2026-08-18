@@ -1,5 +1,22 @@
 # Changelog
 
+## v2.2.0 (2026-08-19)
+
+### One-Command Usage: /AND (Orchestrator + Hermes Bundle)
+- Added `skills/and/` — the AND ORCHESTRATOR: a router skill that classifies
+  any task into one of 8 domains, loads the matching sub-skill via skill_view,
+  and executes per its doctrine. Multi-domain tasks split + dispatch in parallel.
+- Added `skill-bundles/and.yaml` — Hermes skill bundle so `/and <task>` loads
+  the orchestrator with a single slash command.
+- Claude Code: registered `/and` command in `.claude-plugin/plugin.json`.
+- OpenCode/Pi/OpenClaw/Cursor/Aider: `and` skill auto-discovered alongside the
+  other sub-agents.
+- Version bump to 2.2.0 across all manifests (plugin.yaml, package.json,
+  gemini-extension.json).
+- Usage docs: README "One-Command Usage: /AND" section + routing examples.
+
+---
+
 ## v2.1.0 (2026-08-19)
 
 ### New Agent: AND JAILBREAK

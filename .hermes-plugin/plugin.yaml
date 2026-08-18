@@ -1,7 +1,8 @@
 ﻿name: and
-version: "2.1.0"
-description: "AND - Agent Not Detect: 8 multi-domain agents with AI vendor documentation, coding, security, devops, documents, trading, installation, and LLM jailbreaking"
+version: "2.2.0"
+description: "AND - Agent Not Detect: 9 multi-domain agents (orchestrator + coding, security, jailbreak, devops, documents, trading, installation, research). Invoke with /and."
 author: adlptv
 license: MIT
 homepage: "https://github.com/adlptv/Agent-AND"
 skills_dir: "./skills/"
+bundles_dir: "./skill-bundles/"

@@ -1,10 +1,10 @@
 ﻿{
   "name": "agent-and",
-  "version": "2.1.0",
-  "description": "AND - Agent Not Detect: 8 multi-domain agents",
+  "version": "2.2.0",
+  "description": "AND - Agent Not Detect: 9 multi-domain agents (orchestrator + 8 domains)",
   "type": "module",
   "main": ".opencode/plugins/and.js",
-  "keywords": ["pi-package", "skills", "agents", "research", "coding", "security", "devops", "jailbreak"],
+  "keywords": ["pi-package", "skills", "agents", "research", "coding", "security", "devops", "jailbreak", "orchestrator"],
   "pi": {
     "extensions": ["./.pi/extensions/and.ts"],
     "skills": ["./skills"]

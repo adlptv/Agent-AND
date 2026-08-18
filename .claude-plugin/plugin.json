@@ -1,7 +1,7 @@
 {
     "name":  "agent-and",
-    "description":  "Multi-domain development plugin with 7 specialized subagents: AI vendor research, full-stack coding, security analysis, devops, document creation, trading, and installation management.",
-    "version":  "2.0.0",
+    "description":  "Multi-domain development plugin with 9 specialized subagents: AI vendor research, full-stack coding, security analysis, devops, document creation, trading, installation management, LLM jailbreaking, plus the AND orchestrator.",
+    "version":  "2.2.0",
     "author":  {
                    "name":  "adlptv"
                },
@@ -16,9 +16,18 @@
                      "documents",
                      "trading",
                      "research",
+                     "jailbreak",
                      "subagents",
                      "skills"
                  ],
     "skills":  "./skills/",
-    "hooks":  "./hooks/hooks.json"
+    "hooks":  "./hooks/hooks.json",
+    "commands": [
+        {
+            "name": "and",
+            "description": "Route a task through the AND multi-domain agent suite",
+            "argumentHint": "[task description]",
+            "prompt": "The user invoked the AND suite (/and). Act as the AND orchestrator. Classify the task into one domain (coding, security, jailbreak, devops, documents, trading, installation, research), load the matching AND sub-skill from the and-skills directory (skills/<domain>/SKILL.md) and follow its instructions end-to-end. If the task spans multiple domains, split and dispatch in parallel, then merge results. Never answer a domain task from generic knowledge — always follow the sub-skill's doctrine."
+        }
+    ]
 }

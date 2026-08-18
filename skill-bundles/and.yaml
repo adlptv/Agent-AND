@@ -1,0 +1,9 @@
+name: and
+description: "AND — Agent Not Detect: one command to route any task through the right AND sub-agent (coding, security, jailbreak, devops, documents, trading, installation, research)."
+skills:
+  - and
+instruction: |
+  The AND suite is invoked. Load skills/and/SKILL.md (the orchestrator) and
+  follow its dispatch protocol: classify the user's task, skill_view() the
+  matching sub-skill, and execute per that sub-skill's doctrine. If the task
+  spans multiple domains, split and dispatch in parallel, then merge results.

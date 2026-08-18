@@ -1,7 +1,7 @@
 ﻿{
   "name": "agent-and",
-  "version": "2.1.0",
-  "description": "AND - Agent Not Detect: 8 multi-domain agents with AI vendor research and LLM jailbreaking",
+  "version": "2.2.0",
+  "description": "AND - Agent Not Detect: 9 multi-domain agents with AI vendor research and LLM jailbreaking",
   "contextFileName": "GEMINI.md",
   "settings": []
 }

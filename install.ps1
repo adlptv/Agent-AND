@@ -7,7 +7,7 @@ $user = $env:USERPROFILE
 $repo = Split-Path -Parent $MyInvocation.MyCommand.Path
 $skills = "$repo\skills"
 
-Write-Host "`n=== AND — Agent Not Detect v2.1.0 ===`n" -ForegroundColor Cyan
+Write-Host "`n=== AND — Agent Not Detect v2.2.0 ===`n" -ForegroundColor Cyan
 
 # ===== CLAUDE CODE =====
 $claudeCode = Get-Command claude -ErrorAction SilentlyContinue
@@ -56,10 +56,10 @@ if ($opencode -or $All) {
     Write-Host "  Plugin -> $user\.opencode\plugins\" -ForegroundColor Green
 }
 
-# ===== HERMES (OpenClaw) =====
-$hermes = Test-Path "$user\.openclaw-autoclaw"
-if ($hermes -or $All) {
-    Write-Host "[Hermes / OpenClaw]" -ForegroundColor Yellow
+# ===== OPENCLAW =====
+$openclaw = Test-Path "$user\.openclaw-autoclaw"
+if ($openclaw -or $All) {
+    Write-Host "[OpenClaw]" -ForegroundColor Yellow
     $destSkills = "$user\.openclaw-autoclaw\skills"
     $skillDirs = Get-ChildItem -Directory "$skills"
     foreach ($sd in $skillDirs) {
@@ -68,7 +68,31 @@ if ($hermes -or $All) {
         Copy-Item -Recurse $sd.FullName $target -Force
         Write-Host "  Skill: $($sd.Name)" -ForegroundColor Green
     }
-    Write-Host "  All 8 skills registered" -ForegroundColor Green
+    Write-Host "  All 9 skills registered" -ForegroundColor Green
+}
+
+# ===== HERMES AGENT =====
+$hermesHome = $env:HERMES_HOME
+if (-not $hermesHome) {
+    $hermesHome = "$user\AppData\Local\hermes"
+}
+$hermesInstalled = Test-Path "$hermesHome\config.yaml"
+if ($hermesInstalled -or $All) {
+    Write-Host "[Hermes Agent]" -ForegroundColor Yellow
+    $destSkills = "$hermesHome\skills"
+    $skillDirs = Get-ChildItem -Directory "$skills"
+    foreach ($sd in $skillDirs) {
+        $target = "$destSkills\$($sd.Name)"
+        Remove-Item -Recurse -Force $target -ErrorAction SilentlyContinue
+        Copy-Item -Recurse $sd.FullName $target -Force
+        Write-Host "  Skill: $($sd.Name)" -ForegroundColor Green
+    }
+    $destBundles = "$hermesHome\skill-bundles"
+    New-Item -ItemType Directory -Force -Path $destBundles | Out-Null
+    Copy-Item "$repo\skill-bundles\and.yaml" "$destBundles\and.yaml" -Force
+    Write-Host "  Bundle /and -> $destBundles\and.yaml" -ForegroundColor Green
+    Write-Host "  All 9 skills registered" -ForegroundColor Green
 }
 
 Write-Host "`n=== Done. Restart your agent to load AND agents. ===" -ForegroundColor Cyan
+Write-Host "Hermes: /and <task> (bundle) — or hermes bundles list to verify." -ForegroundColor Cyan
